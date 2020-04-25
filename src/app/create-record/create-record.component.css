@@ -1,24 +1,8 @@
 .container-fluid{
     width: 100%;
     height: fit-content;
-    background-image: url('../../assets/img/bg-create.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-
     padding-top: 5rem;
     padding-bottom: 5rem;
-}
-form{
-    position: relative;
-    width: fit-content;
-    height: fit-content;
-    background-color: rgba(34, 38, 45, 0.781);
-    /* border: 1px solid #22262D; */
-    border-radius: 0.5rem;
-
-    box-shadow: 1px 1px 10px 5px #9BA5BA;
-    color: #FFFFFF;
-    padding: 2rem;
 }
 /***********************
     Section Head
@@ -28,19 +12,16 @@ form{
     font-weight: 700;
     width: fit-content;
   }
-  .section-head>p{
-      width: fit-content;
-  }
   .section-head {
   margin: 0 0 2rem 0;
-  text-shadow:  2px 2px 5px rgb(23, 24, 23);
-
+ 
   }
 /***********************
     Submit Btn
 *************************/
 
   .submit-btn{
+      float: right;
   padding-right: 2rem;
   padding-left: 2rem;
   font-weight: 400;
@@ -77,21 +58,12 @@ form{
 }
 
 label{
-    text-shadow:  1px 1px 2px rgb(23, 24, 23);
+    color: black;
 }
 
-@media only screen and (min-width: 750px){
+
+@media only screen and (min-width : 760px){
     form{
-        width: 35rem;
-    }
-}
-@media only screen and (min-width: 650px){
-    form{
-        width: 30rem;
-    }
-}
-@media only screen and (min-width: 540px){
-    form{
-        width: 30rem;
+        width: 70%;
     }
 }

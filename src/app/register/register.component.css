@@ -1,0 +1,52 @@
+/***********************
+    Section Head
+*************************/
+.section-head h2{
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    width: fit-content;
+  }
+  .section-head {
+  margin: 0 0 2rem 0;
+ 
+  }
+/***********************
+    Submit Btn
+*************************/
+
+  .submit-btn{
+    float: right;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    background-color: #2861CF;
+    border: 2px solid #2861CF;
+    border-radius: 2rem;
+  }
+  .submit-btn-disabled{
+      padding-right: 2rem;
+      padding-left: 2rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      background-color: #9BA5BA;
+      border: 2px solid #9BA5BA;
+      border-radius: 2rem;  
+      cursor: default;
+  }
+  .submit-btn:hover {
+      border: 2px solid #FA9600;
+      color: #ffffff;
+      background-color: #FA9600;
+      box-shadow: 2px 4px 5px #000;
+  }
+  
+/***********************
+    Submit Btn
+*************************/
+
+@media only screen and (min-width : 760px){
+    form{
+        width: 70%;
+    }
+}

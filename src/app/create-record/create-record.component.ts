@@ -43,8 +43,8 @@ export class CreateRecordComponent implements OnInit {
       return
     }
 
-    // this.submitted=false;
-    // this.addTournamentForm.reset();
+    this.submitted=false;
+    this.createRecordForm.reset();
   }
 
 

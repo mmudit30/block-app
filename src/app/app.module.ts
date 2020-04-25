@@ -7,12 +7,16 @@ import { HomeComponent } from './home/home.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CreateRecordComponent
+    CreateRecordComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
