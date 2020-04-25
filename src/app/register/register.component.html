@@ -10,53 +10,53 @@
     </div>
 
         <div class="form-group">
-            <label>Full Name</label>
+            <label>Doctor's Full Name</label>
             <input
              class="form-control"
-             formControlName="full_name"
+             formControlName="doctor_full_name"
              type="text"
             >
-            <div *ngIf="submitted && f.full_name.errors" class="text-danger">
-                <div *ngIf="f.full_name.errors.required">Field is required</div>
+            <div *ngIf="submitted && f.doctor_full_name.errors" class="text-danger">
+                <div *ngIf="f.doctor_full_name.errors.required">Field is required</div>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Doctor ID Type</label>
+            <label>Doctor's Ethereum Address</label>
             <input
              class="form-control"
-             formControlName="doctor_id_type"
+             formControlName="doctor_ethereum_address"
              type="text"
             >
-            <div *ngIf="submitted && f.doctor_id_type.errors" class="text-danger">
-                <div *ngIf="f.doctor_id_type.errors.required">Field is required</div>
+            <div *ngIf="submitted && f.doctor_ethereum_address.errors" class="text-danger">
+                <div *ngIf="f.doctor_ethereum_address.errors.required">Field is required</div>
             </div>
 
         </div>
 
         <div class="form-group">
-            <label>Doctor Id</label>
+            <label>Doctor's Medical Registration Number</label>
             <input
              class="form-control"
-             formControlName="doctor_id"
+             formControlName="doctor_unique_id"
              type="text"
             >
-            <div *ngIf="submitted && f.doctor_id.errors" class="text-danger">
-                <div *ngIf="f.doctor_id.errors.required">Field is required</div>
+            <div *ngIf="submitted && f.doctor_unique_id.errors" class="text-danger">
+                <div *ngIf="f.doctor_unique_id.errors.required">Field is required</div>
             </div>
 
         </div>
 
 
         <div class="form-group">
-            <label>Password</label>
+            <label>Lab ID</label>
             <input
              class="form-control"
-             formControlName="password"
+             formControlName="doctor_lab_id"
              type="text"
             >
-            <div *ngIf="submitted && f.password.errors" class="text-danger">
-                <div *ngIf="f.password.errors.required">Field is required</div>
+            <div *ngIf="submitted && f.doctor_lab_id.errors" class="text-danger">
+                <div *ngIf="f.doctor_lab_id.errors.required">Field is required</div>
             </div>
         </div>
 

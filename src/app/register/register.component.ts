@@ -16,10 +16,10 @@ export class RegisterComponent implements OnInit {
     private apiservice : ApiService
   ) {
     this.registerForm = new FormGroup({
-      doctor_id_type: new FormControl('', [Validators.required]),
-      doctor_id: new FormControl('', [Validators.required]),
-      full_name: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      doctor_unique_id: new FormControl('', [Validators.required]),
+      doctor_full_name: new FormControl('', [Validators.required]),
+      doctor_ethereum_address: new FormControl('', [Validators.required]),
+      doctor_lab_id: new FormControl('', [Validators.required])
     });
 
    }

@@ -16,10 +16,11 @@ export class CreateRecordComponent implements OnInit {
     private apiservice : ApiService
    ) {
     this.createRecordForm = new FormGroup({
-      unique_id_type: new FormControl('', [Validators.required]),
-      unique_id_number: new FormControl('', [Validators.required]),
-      full_name: new FormControl('', [Validators.required]),
-      test_result: new FormControl('', [Validators.required]),
+      patient_id_type: new FormControl('', [Validators.required]),
+      patient_id_number: new FormControl('', [Validators.required]),
+      patient_full_name: new FormControl('', [Validators.required]),
+      patient_antibody_count: new FormControl('', [Validators.required]),
+      patient_test_result: new FormControl('', [Validators.required]),
     });
 
    }

@@ -16,8 +16,7 @@ export class LoginComponent implements OnInit {
     private apiservice : ApiService
   ) {
     this.loginForm = new FormGroup({
-      unique_address: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      doctor_unique_id: new FormControl('', [Validators.required])
     });
 
    }

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <form
       (submit)="createRecord(createRecordForm.value)" 
       class="mx-auto mt-md-5"
@@ -10,36 +10,32 @@
         </div>
             <div class="form-row">
               <div class="form-group col-12">
-                <label>Unique ID Type</label>
+                <label>Patient's ID Type </label>
                 <select
-                    formControlName="unique_id_type"
+                    formControlName="patient_id_type"
                     class="form-control" 
                     >
                     <option>Passport Number</option>
-                    <option>Voter ID Number</option>
-                    <option>Aadhar Number</option>
-
+                    <!-- <option>Voter ID Number</option>
+                    <option>Aadhar Number</option> -->
+                    <option>Social Securiy Number</option>
                 </select>
-
-                <div *ngIf="submitted && f.unique_id_type.errors" class="text-danger">
-                    <div *ngIf="f.unique_id_type.errors.required">Type is required</div>
+                <div *ngIf="submitted && f.patient_id_type.errors" class="text-danger">
+                    <div *ngIf="f.patient_id_type.errors.required">Field is required</div>
                 </div>
-
               </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-12">
-                  <label>Unique ID Number</label>
+                  <label>Patient ID Number</label>
                   <input 
-                  formControlName="unique_id_number"
+                  formControlName="patient_id_number"
                   type="text" class="form-control" 
                   >
-
-                  <div *ngIf="submitted && f.unique_id_number.errors" class="text-danger">
-                    <div *ngIf="f.unique_id_number.errors.required">Type is required</div>
-                  </div>
-                  
+                  <div *ngIf="submitted && f.patient_id_number.errors" class="text-danger">
+                    <div *ngIf="f.patient_id_number.errors.required">Field is required</div>
+                  </div>                  
                 </div>
             </div>
 
@@ -47,35 +43,42 @@
                 <div class="form-group col-12">
                   <label>Patient's Full Name</label>
                   <input 
-                  formControlName="full_name"
+                  formControlName="patient_full_name"
                   type="text" class="form-control" 
                   >
-
-                  <div *ngIf="submitted && f.full_name.errors" class="text-danger">
-                    <div *ngIf="f.full_name.errors.required">Type is required</div>
+                  <div *ngIf="submitted && f.patient_full_name.errors" class="text-danger">
+                    <div *ngIf="f.patient_full_name.errors.required">Field is required</div>
                   </div>
-
                 </div>
             </div>
-            
+
+            <div class="form-row">
+              <div class="form-group col-12">
+                <label>Patient's Antibodies Count</label>
+                <input 
+                formControlName="patient_antibody_count"
+                type="text" class="form-control" 
+                >
+                <div *ngIf="submitted && f.patient_antibody_count.errors" class="text-danger">
+                  <div *ngIf="f.patient_antibody_count.errors.required">Field is required</div>
+                </div>
+              </div>
+          </div>
+
             <div class="form-row">
                 <div class="form-group col-12">
-                  <label>Test Result</label>
-    
+                  <label>Patient's Test Result</label>
                   <select
-                  formControlName="test_result"
+                  formControlName="patient_test_result"
                   class="form-control" 
                   >
-
                   <option>Positive Case</option>
                   <option>Negative Case</option>
                   <option>Asymptomatic Case</option>
                   </select>
-      
-                  <div *ngIf="submitted && f.test_result.errors" class="text-danger">
-                    <div *ngIf="f.test_result.errors.required">Type is required</div>
+                  <div *ngIf="submitted && f.patient_test_result.errors" class="text-danger">
+                    <div *ngIf="f.patient_test_result.errors.required">Field is required</div>
                   </div>
-
                 </div>
             </div>
       
