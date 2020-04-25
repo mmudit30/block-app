@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <form
+      (submit)="createRecord(createRecordForm)" 
+      class="mx-auto" 
+      [formGroup]="createRecordForm"
+      >
+
+        <div class="section-head">
+            <h2 class="mx-auto text-center primary-light-blue">Create Record</h2>
+        </div>
+            <div class="form-row">
+              <div class="form-group col-12">
+                <label>Unique ID Type</label>
+                <select
+                    formControlName="unique_id_type"
+                    class="form-control" 
+                    >
+                    <option>Passport Number</option>
+                    <option>Voter ID Number</option>
+                    <option>Aadhar Number</option>
+
+                </select>
+
+                <div *ngIf="submitted && f.unique_id_type.errors" class="text-danger">
+                    <div *ngIf="f.unique_id_type.errors.required">Type is required</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-12">
+                  <label>Unique ID Number</label>
+                  <input 
+                  formControlName="unique_id_number"
+                  type="text" class="form-control" 
+                  >
+
+                  <div *ngIf="submitted && f.unique_id_number.errors" class="text-danger">
+                    <div *ngIf="f.unique_id_number.errors.required">Type is required</div>
+                  </div>
+                  
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-12">
+                  <label>Patient's Full Name</label>
+                  <input 
+                  formControlName="full_name"
+                  type="text" class="form-control" 
+                  >
+
+                  <div *ngIf="submitted && f.full_name.errors" class="text-danger">
+                    <div *ngIf="f.full_name.errors.required">Type is required</div>
+                  </div>
+
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col-12">
+                  <label>Test Result</label>
+    
+                  <select
+                  formControlName="test_result"
+                  class="form-control" 
+                  >
+
+                  <option>Positive Case</option>
+                  <option>Negative Case</option>
+                  <option>Asymptomatic Case</option>
+                  </select>
+      
+                  <div *ngIf="submitted && f.test_result.errors" class="text-danger">
+                    <div *ngIf="f.test_result.errors.required">Type is required</div>
+                  </div>
+
+                </div>
+            </div>
+      
+            <button type="submit"
+              class="btn submit-btn">
+              Submit
+            </button>
+    </form>
+</div>
+<!-- 
+<div class="container-fluid alertbox" [hidden]="!showhide">
+  <div class="alert alert-success text-center mt-5 mx-auto" role="alert" >
+    <h4 class="alert-heading">Form Submitted!</h4>
+    <p>Please wait for the call from our team</p>
+  </div>
+</div> -->
+        <!-- [ngClass]="{'submit-btn': termsCheck, 'disabled': !termsCheck, 'submit-btn-disabled': !termsCheck}" -->
