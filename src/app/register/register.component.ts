@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,9 @@ export class RegisterComponent implements OnInit {
   submitted: Boolean = false;
   registerForm: FormGroup;
 
-  constructor() {
+  constructor(
+    private apiservice : ApiService
+  ) {
     this.registerForm = new FormGroup({
       doctor_id_type: new FormControl('', [Validators.required]),
       doctor_id: new FormControl('', [Validators.required]),

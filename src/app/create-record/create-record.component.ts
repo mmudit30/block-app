@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-create-record',
@@ -11,7 +12,9 @@ export class CreateRecordComponent implements OnInit {
   submitted: Boolean = false;
   createRecordForm: FormGroup;
 
-  constructor() {
+  constructor( 
+    private apiservice : ApiService
+   ) {
     this.createRecordForm = new FormGroup({
       unique_id_type: new FormControl('', [Validators.required]),
       unique_id_number: new FormControl('', [Validators.required]),

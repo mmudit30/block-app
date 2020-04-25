@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,9 @@ export class LoginComponent implements OnInit {
   submitted: Boolean = false;
   loginForm: FormGroup;
 
-  constructor() {
+  constructor(
+    private apiservice : ApiService
+  ) {
     this.loginForm = new FormGroup({
       unique_address: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
