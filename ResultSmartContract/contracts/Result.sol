@@ -33,7 +33,7 @@ contract Result is Ownable {
     ) external onlyOwner {
         doctors[_doctor] = true;
         addressToDoctorId[_doctor] = _doctorId;
-        DoctorInfo doctor = idToDoctorInfo[_doctorId];
+        DoctorInfo storage doctor = idToDoctorInfo[_doctorId];
         doctor.name = _name;
         doctor.hospital = _hospital;
     }
@@ -47,10 +47,10 @@ contract Result is Ownable {
         require(patientToId[_patientId] == 0, "patient is already exist");
         id++;
         patientToId[_patientId] = id;
-        Info patient = patientResult[id];
+        Info storage patient = patientResult[id];
         patient.name = _name;
         patient.idType = _idType;
-        patient.doctorId = idToDoctorInfo[addressToDoctorId[msg.sender]];
+        patient.doctorId = addressToDoctorId[msg.sender];
         patient.testResult = _testResult;
     }
 
@@ -60,7 +60,7 @@ contract Result is Ownable {
     {
         require(patientToId[_patientId] != 0, "patient does not exist");
         uint256 patientId = patientToId[_patientId];
-        Info patient = patientResult[patientId];
+        Info storage patient = patientResult[patientId];
         patient.testResult = _testResult;
     }
 
@@ -70,12 +70,26 @@ contract Result is Ownable {
         returns (string memory, string memory, string memory, string memory)
     {
         uint256 patientId = patientToId[_patientId];
-        Info patient = patientResult[patientId];
+        Info memory patient = patientResult[patientId];
         return (
             patient.name,
             patient.idType,
             patient.doctorId,
             patient.testResult
         );
+    }
+
+    function getDoctorInfo(string calldata _doctorId)
+        external
+        view
+        returns (string memory, string memory)
+    {
+        DoctorInfo memory doctor = idToDoctorInfo[_doctorId];
+        return (doctor.name, doctor.hospital);
+    }
+
+    function kill() public onlyOwner returns (bool) {
+        selfdestruct(msg.sender);
+        return true;
     }
 }
