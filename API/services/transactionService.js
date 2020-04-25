@@ -3,14 +3,9 @@ const { getWeb3Instant } = require('../utils/web3Util');
 
 const { web3, contract } = getWeb3Instant();
 
-exports.registerDoctor = async (address, id, name, hospital, res) => {
+exports.registerDoctor = async (address, id, name, labId, res) => {
   try {
-    const data = await contract.methods.assignDoctor(
-      address,
-      id,
-      name,
-      hospital
-    );
+    const data = await contract.methods.assignDoctor(address, id, name, labId);
     const txObj = {
       from: '0xbc5aC9e4bEe4aAE9F0D97F27d9e81B3eBDC8a39a',
       data,

@@ -18,7 +18,7 @@ contract Result is Ownable {
     }
     struct DoctorInfo {
         string name;
-        string hospital;
+        string labId;
     }
     modifier onlyDoctor() {
         require(doctors[msg.sender], "You must be a doctor");
@@ -29,13 +29,13 @@ contract Result is Ownable {
         address _doctor,
         string calldata _doctorId,
         string calldata _name,
-        string calldata _hospital
+        string calldata _labId
     ) external onlyOwner {
         doctors[_doctor] = true;
         addressToDoctorId[_doctor] = _doctorId;
         DoctorInfo storage doctor = idToDoctorInfo[_doctorId];
         doctor.name = _name;
-        doctor.hospital = _hospital;
+        doctor.labId = _labId;
     }
 
     function addResult(
@@ -85,7 +85,17 @@ contract Result is Ownable {
         returns (string memory, string memory)
     {
         DoctorInfo memory doctor = idToDoctorInfo[_doctorId];
-        return (doctor.name, doctor.hospital);
+        return (doctor.name, doctor.labId);
+    }
+
+    function signInDoctor(string calldata _doctorId)
+        external
+        view
+        returns (bool)
+    {
+        return
+            keccak256(abi.encodePacked(_doctorId)) ==
+            keccak256(abi.encodePacked(addressToDoctorId[msg.sender]));
     }
 
     function kill() public onlyOwner returns (bool) {

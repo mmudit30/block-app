@@ -12,6 +12,13 @@ contract('Result', (accounts) => {
     });
     assert.equal(result.receipt.status, true);
   });
+  it('should allow to sign in doctor', async () => {
+    await contract.assignDoctor(alice, 'VN-54', 'Bob', 'CV', {
+      from: bob,
+    });
+    const result = await contract.signInDoctor('VN-54', { from: alice });
+    assert.equal(result, true);
+  });
   it('should allow to add result', async () => {
     await contract.assignDoctor(alice, 'VN-54', 'Bob', 'CV', {
       from: bob,

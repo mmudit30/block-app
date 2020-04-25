@@ -9,8 +9,8 @@ app.use(bodyParser.json());
 
 app.post('/register-doctor', async (req, res) => {
   try {
-    const { address, id, name, hospital } = req.body;
-    await registerDoctor(address, id, name, hospital, res);
+    const { address, id, name, labId } = req.body;
+    await registerDoctor(address, id, name, labId, res);
   } catch (e) {
     res.status(500).send(e);
   }
