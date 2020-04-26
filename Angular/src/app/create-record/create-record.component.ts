@@ -67,8 +67,8 @@ export class CreateRecordComponent implements OnInit {
         form_data.patient_id_number,
         form_data.patient_full_name,
         form_data.patient_id_type,
-        // form_data.patient_antibody_count,
-        form_data.patient_test_result
+        form_data.patient_test_result,
+        form_data.patient_antibody_count
         ).send({from: account[0] })
           .then((obj)=>{
             console.log(obj);
