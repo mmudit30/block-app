@@ -10,10 +10,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -47,7 +43,7 @@ public class VerificationActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         setContentView(R.layout.activity_verification);
-        personId = getIntent().getStringExtra("QR_CODE");
+        personId = getIntent().getStringExtra("PATIENT_ID");
         try {
             run();
         } catch (IOException e) {
@@ -60,8 +56,7 @@ public class VerificationActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(VerificationActivity.this, VerifySuccessActivity.class);
-                    intent.putExtra("RESPONSE",myResponse );
+                    Intent intent = new Intent(VerificationActivity.this, VerifyFailedActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
@@ -88,6 +83,7 @@ public class VerificationActivity extends AppCompatActivity {
                     public void run() {
                         Intent intent = new Intent(VerificationActivity.this, VerifySuccessActivity.class);
                         intent.putExtra("RESPONSE",myResponse );
+                        intent.putExtra("PATIENT_ID",personId );
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }

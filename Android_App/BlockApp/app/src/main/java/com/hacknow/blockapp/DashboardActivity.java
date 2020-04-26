@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -15,17 +16,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DashboardActivity extends AppCompatActivity {
     Button show_qr;
-    String patientName, idType, doctorId, testResult, antibodyCount;
+    String patientId, patientName, idType, doctorId, testResult, antibodyCount;
     TextView tv_patientName, tv_testResult, tv_antibodyCount,  tv_warningMsg;
     ImageView im_statusIcon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        patientId = getIntent().getStringExtra("PATIENT_ID");
         try {
             JSONObject mainObject = new JSONObject(getIntent().getStringExtra("RESPONSE"));
             patientName = mainObject.getString("0");
@@ -84,9 +87,10 @@ public class DashboardActivity extends AppCompatActivity {
                 //nothing;
             }
         });
-
+        Bitmap myBitmap = QRCodeUtil.encodeAsBitmap(patientId, 600, 600);
         ImageView imageView = new ImageView(this);
-        imageView.setImageResource(R.drawable.qr_code);
+        imageView.setImageBitmap(myBitmap);
+//        imageView.setImageResource(R.drawable.qr_code);
         builder.addContentView(imageView, new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));

@@ -89,7 +89,7 @@ public class CustomQrViewActivity extends AppCompatActivity implements ZXingScan
         //Toast.makeText(this, "Contents = " + rawResult.getText() +", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, VerificationActivity.class);
-        intent.putExtra("QR_CODE",rawResult.getText() );
+        intent.putExtra("PATIENT_ID",rawResult.getText() );
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
