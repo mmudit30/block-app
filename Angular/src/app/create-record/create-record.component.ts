@@ -73,11 +73,10 @@ export class CreateRecordComponent implements OnInit {
           .then((obj)=>{
             console.log(obj);
           });
-
     });
 
-    // this.submitted=false;
-    // this.createRecordForm.reset();
+    this.submitted=false;
+    this.createRecordForm.reset();
   }
 
   async getAccount(){

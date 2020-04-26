@@ -4,6 +4,7 @@ import { CreateRecordComponent } from './create-record/create-record.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
     path: 'home', component: HomeComponent
   },
   {
-    path: 'create-record', component: CreateRecordComponent
+    path: 'create-record', component: CreateRecordComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'login', component: LoginComponent

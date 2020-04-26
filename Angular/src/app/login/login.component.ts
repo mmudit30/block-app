@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ApiService, ContractsService } from '../api.service';
+import { ApiService, ContractsService, AuthService } from '../api.service';
+
+declare let window: any;
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit {
   contract;
 
   constructor(
-    private contractService : ContractsService
+    private contractService : ContractsService,
+    private authService : AuthService
+
     ){
       const inst = contractService.getWeb3Instant();
       
@@ -44,20 +48,29 @@ export class LoginComponent implements OnInit {
    */
   doLogin(form_data) {
     this.submitted = true;
-    // console.log("data", form_data);
     console.log(typeof form_data.doctor_unique_id);
 
     if(this.loginForm.invalid){
       return;
     }
     
-    this.contract.methods.signInDoctor('VN-54').call({from: '0xbc5aC9e4bEe4aAE9F0D97F27d9e81B3eBDC8a39a'})
-          .then((obj)=>{
-            console.log(obj);
-          });
- 
-    // this.submitted=false;
-    // this.loginForm.reset();
+    this.getAccount().then( account =>{
+      console.log(account[0]);      
+
+      this.contract.methods.signInDoctor(form_data.doctor_unique_id)
+            .call({from: account[0]})
+            .then((obj)=>{
+              console.log(obj);
+              if(obj)
+              this.authService.logged=true;
+            });
+    }); 
+    this.submitted=false;
+    this.loginForm.reset();
+  }
+
+  async getAccount(){
+    return await window.web3.eth.getAccounts();
   }
 
 

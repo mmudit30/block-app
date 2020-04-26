@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ export class AppComponent {
   title = 'block-app';
 
   constructor(
+    private authservice : AuthService
     ){
   }
   ngOnInit() {

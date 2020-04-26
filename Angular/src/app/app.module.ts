@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ApiService, ContractsService } from './api.service';
+import { ApiService, ContractsService, AuthService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ApiService, ContractsService],
+  providers: [ApiService, ContractsService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -46,9 +46,8 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.apiservice.registerDoctor(form_data);
-
-    // this.submitted=false;
-    // this.registerForm.reset();
+    this.submitted=false;
+    this.registerForm.reset();
   }
 
 

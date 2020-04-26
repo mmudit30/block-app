@@ -56,11 +56,6 @@ export class ContractsService {
     return { web3, contract }; 
   };
 
-
-  
-
-
-
 }
 
 @Injectable({
@@ -90,4 +85,24 @@ export class ApiService {
                     });
   }
   
+}
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  constructor() { }
+
+  logged:Boolean = false;
+
+  loggedIn(): Boolean{
+    return this.logged;
+  }
+
+  logOutUser(){
+    this.logged = false;
+  }
+
 }
