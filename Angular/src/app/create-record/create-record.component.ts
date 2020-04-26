@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ApiService } from '../api.service';
+import { ApiService, ContractsService } from '../api.service';
+
+declare let window: any;
 
 @Component({
   selector: 'app-create-record',
@@ -9,12 +11,21 @@ import { ApiService } from '../api.service';
 })
 export class CreateRecordComponent implements OnInit {
 
+
   submitted: Boolean = false;
   createRecordForm: FormGroup;
+  web3;
+  contract;
 
   constructor( 
-    private apiservice : ApiService
+    private apiservice : ApiService,
+    private contractService : ContractsService
    ) {
+    const inst = contractService.getWeb3Instant();
+      
+    this.web3 = inst.web3
+    this.contract = inst.contract;
+
     this.createRecordForm = new FormGroup({
       patient_id_type: new FormControl('', [Validators.required]),
       patient_id_number: new FormControl('', [Validators.required]),
@@ -26,6 +37,8 @@ export class CreateRecordComponent implements OnInit {
    }
 
   ngOnInit() {
+    
+
   }
 
     /**
@@ -47,9 +60,28 @@ export class CreateRecordComponent implements OnInit {
       return
     }
 
-    this.submitted=false;
-    this.createRecordForm.reset();
+    this.getAccount().then( account =>{
+      console.log(account[0]);      
+      
+      this.contract.methods.addResult(
+        form_data.patient_id_number,
+        form_data.patient_full_name,
+        form_data.patient_id_type,
+        // form_data.patient_antibody_count,
+        form_data.patient_test_result
+        ).send({from: account[0] })
+          .then((obj)=>{
+            console.log(obj);
+          });
+
+    });
+
+    // this.submitted=false;
+    // this.createRecordForm.reset();
   }
 
+  async getAccount(){
+    return await window.web3.eth.getAccounts();
+  }
 
 }

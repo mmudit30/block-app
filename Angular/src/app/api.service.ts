@@ -4,7 +4,7 @@ import Web3 from 'web3';
 
 
 declare let require: any;
-// declare let window: any;
+declare let window: any;
 
 let contractAbi = require('../../../ResultSmartContract/build/contracts/Result.json').abi;
 @Injectable()
@@ -13,8 +13,7 @@ export class ContractsService {
   private _web3: any;
 
   private _tokenContract: any;
-  private _tokenContractAddress: string = "0x038f16Fb148fBBAB34Ff086bF0cCD9e72d8fb381";
-  // private _tokenContractAddress: string = "0xbc84f3bf7dd607a37f9e5848a6333e6c188d926c";
+  private _tokenContractAddress: string = "0x03f304Fa4e8D015E7bd16030a6AC5F9699A9b4ED";
   
   constructor() {
     this.getMetamaskAccount();
@@ -52,7 +51,7 @@ export class ContractsService {
     const web3 = new Web3(window.web3.givenProvider);
     const contract = new web3.eth.Contract(
       contractAbi,
-      '0x038f16Fb148fBBAB34Ff086bF0cCD9e72d8fb381'
+      '0x03f304Fa4e8D015E7bd16030a6AC5F9699A9b4ED'
     );
     return { web3, contract }; 
   };
@@ -85,7 +84,7 @@ export class ApiService {
       }
     }    
 
-    this.httpClient.post<any>('http://localhost:4000/register-doctor' , details, this.httpOptions)
+    this.httpClient.post<any>('http://localhost:4000/register-doctor' , details)
                     .subscribe(apiData => {
                       console.log(apiData);                      
                     });

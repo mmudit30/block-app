@@ -13,8 +13,17 @@ app.use(bodyParser.json());
 
 app.post('/register-doctor', async (req, res) => {
   try {
-    const { address, id, name, labId } = req.body;
-    await registerDoctor(address, id, name, labId, res);
+    // const { address, id, name, labId } = req.body;
+    // console.log(req.body);
+    // console.log(address);    
+    await registerDoctor(
+      req.body.doctor_ethereum_address,
+      req.body.doctor_unique_id,
+      req.body.doctor_full_name,
+      req.body.doctor_lab_id,
+      res
+      );
+      // address, id, name, labId, res);
   } catch (e) {
     res.status(500).send(e);
   }
@@ -30,4 +39,7 @@ app.get('/get-doctor', async (req, res) => {
   res.send(result);
 });
 
-app.listen(4000);
+app.listen(4000)
+    .on('listening', ()=>{
+      console.log("Listening on http://localhost:4000/ ");
+    });

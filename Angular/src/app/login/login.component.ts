@@ -26,26 +26,8 @@ export class LoginComponent implements OnInit {
         doctor_unique_id: new FormControl('', [Validators.required])
       });
 
-
-      // console.log(this.web3);
-      // console.log(this.contract);
-
-      // this.contract.methods.getDoctorInfo('VN-54').call().then((obj)=>{
-      //   console.log(obj);
-        
-      // });
-
    }
    
-  //  async getAccount(){
-  //   const account = await window.web3.eth.getAccounts();
-  //   console.log(account);
-
-  //   this.contract.methods.addAddress().call({from: account})
-  //                .once('receipt', receipt => console.log("SUCCESS") );
-
-  //  }
-
   ngOnInit() {
   }
 
@@ -69,14 +51,11 @@ export class LoginComponent implements OnInit {
       return;
     }
     
-    this.contract.methods.signInDoctor('VN-54').call().then((obj)=>{
-      console.log(obj);
-    });
-    
-  // console.log(this.contract.getDoctorInfo('mudit'));
-
-    // this.contract.signInDoctor(form_data.doctor_unique_id);
-
+    this.contract.methods.signInDoctor('VN-54').call({from: '0xbc5aC9e4bEe4aAE9F0D97F27d9e81B3eBDC8a39a'})
+          .then((obj)=>{
+            console.log(obj);
+          });
+ 
     // this.submitted=false;
     // this.loginForm.reset();
   }
