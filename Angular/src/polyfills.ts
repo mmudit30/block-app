@@ -44,7 +44,7 @@
  * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
  * (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
  * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
- *
+ * 
  *  in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
  *  with the following flag, it will bypass `zone.js` patch for IE/Edge
  *
@@ -57,6 +57,18 @@
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
+// (window as any).global = window;
+// if (global === undefined) {
+//    var global = window;
+// }
+// global.Buffer = global.Buffer || require('buffer').Buffer;
+// (window as any).process = {
+//     env: { DEBUG: undefined },
+// };
+
+(window as any).global = window;
+global.Buffer = global.Buffer || require('buffer').Buffer;
+global.process = require('process');
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ContractsService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'block-app';
+
+  constructor(
+    private contractService : ContractsService
+    ){
+      console.log(contractService.getWeb3Instant());      
+  }
+  ngOnInit() {
+
+  }
+
+
 }

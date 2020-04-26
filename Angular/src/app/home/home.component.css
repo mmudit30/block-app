@@ -2,6 +2,10 @@
   padding: 0rem 0rem;
    position: relative;
    max-width: 100%;
+   background-image: url('../../assets/img/bg-home-1.jpg');
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
   }
   
   .jumbotron-overlay {
@@ -13,6 +17,11 @@
   .jumbotron-padding{
    padding-top: 6rem;
    
+  }
+  .jumbotron-odi-hero .display-4{
+      font-weight: 400;
+      text-shadow: 2px 2px 5px black;
+      color: wheat;
   }
   
   .btn-circle {

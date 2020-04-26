@@ -16,9 +16,9 @@ export class RegisterComponent implements OnInit {
     private apiservice : ApiService
   ) {
     this.registerForm = new FormGroup({
+      doctor_ethereum_address: new FormControl('', [Validators.required]),
       doctor_unique_id: new FormControl('', [Validators.required]),
       doctor_full_name: new FormControl('', [Validators.required]),
-      doctor_ethereum_address: new FormControl('', [Validators.required]),
       doctor_lab_id: new FormControl('', [Validators.required])
     });
 
@@ -40,14 +40,15 @@ export class RegisterComponent implements OnInit {
    */
   doRegister(form_data) {
     this.submitted = true;
-    console.log("data", form_data);
+    console.log("data from form", form_data);
 
     if(this.registerForm.invalid){
       return;
     }
+    this.apiservice.registerDoctor(form_data);
 
-    this.submitted=false;
-    this.registerForm.reset();
+    // this.submitted=false;
+    // this.registerForm.reset();
   }
 
 
