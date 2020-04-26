@@ -1,11 +1,13 @@
 package com.hacknow.blockapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +25,7 @@ import org.json.JSONObject;
 public class DashboardActivity extends AppCompatActivity {
     Button show_qr;
     String patientId, patientName, idType, doctorId, testResult, antibodyCount;
-    TextView tv_patientName, tv_testResult, tv_antibodyCount,  tv_warningMsg;
+    TextView tv_patientName, tv_testResult, tv_status, tv_antibodyCount,  tv_warningMsg;
     ImageView im_statusIcon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,9 @@ public class DashboardActivity extends AppCompatActivity {
         tv_patientName = findViewById(R.id.tv_patientName);
         tv_testResult = findViewById(R.id.tv_testResult);
         tv_warningMsg = findViewById(R.id.tv_warningMsg);
+        tv_status = findViewById(R.id.tv_status);
         im_statusIcon = findViewById(R.id.im_statusIcon);
+
 
 
         show_qr = findViewById(R.id.btn_show_qr);
@@ -65,11 +69,15 @@ public class DashboardActivity extends AppCompatActivity {
     public void  updateStatus(){
         tv_patientName.setText("Hi "+ patientName);
         if(testResult.equals("Positive Case")){
+            tv_status.setText(R.string.infected);
+            tv_status.setTextColor(ContextCompat.getColor(this, R.color.colorRed));
             tv_testResult.setBackgroundResource(R.color.colorRed);
             tv_testResult.setText(R.string.positive);
             tv_warningMsg.setVisibility(View.VISIBLE);
             im_statusIcon.setImageResource(R.drawable.shield_x);
         } else{
+            tv_status.setText(R.string.safe);
+            tv_status.setTextColor(ContextCompat.getColor(this, R.color.colorGreen));
             tv_testResult.setBackgroundResource(R.color.colorGreen);
             tv_testResult.setText(R.string.negative);
             tv_warningMsg.setVisibility(View.INVISIBLE);

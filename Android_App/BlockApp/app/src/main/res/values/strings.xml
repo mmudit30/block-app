@@ -32,4 +32,6 @@
     <string name="negative">Negative</string>
     <string name="positive">Positive</string>
     <string name="warning_text">You are tested Positive!!\n Call helpline number immediately.\n Isolate yourself and wait for instructions</string>
+    <string name="infected">You are Infected</string>
+    <string name="safe">You are Safe</string>
 </resources>

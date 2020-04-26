@@ -118,7 +118,7 @@
         android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You are Infected"
+        android:text="@string/infected"
         android:textAlignment="center"
         android:textColor="@color/colorRed"
         android:textSize="20sp"
