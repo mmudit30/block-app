@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Web3 from 'web3';
 
-
 declare let require: any;
 declare let window: any;
 

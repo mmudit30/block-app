@@ -10,11 +10,10 @@ export class AppComponent {
   title = 'block-app';
 
   constructor(
-    private authservice : AuthService
+    public authservice : AuthService
     ){
   }
   ngOnInit() {
-
   }
 
 
