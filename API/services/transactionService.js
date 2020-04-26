@@ -9,7 +9,7 @@ exports.registerDoctor = async (address, id, name, labId, res) => {
     const txObj = {
       from: '0xbc5aC9e4bEe4aAE9F0D97F27d9e81B3eBDC8a39a',
       data,
-      to: '0xDc6f82EdBa2ed819e42D3Fcbed15513EA92cE874',
+      to: '0x03f304Fa4e8D015E7bd16030a6AC5F9699A9b4ED',
       value: 0,
     };
     const adminPrivateKey =
@@ -18,9 +18,13 @@ exports.registerDoctor = async (address, id, name, labId, res) => {
     let signedTx = await signTransaction(tx, adminPrivateKey);
     await web3.eth
       .sendSignedTransaction(signedTx)
-      .on('transactionHash', (txHash) => {
-        res.send({ transactionHash: txHash });
+      .once('receipt', (receipt) => {
+        console.log(receipt);
+        res.send({ success: true });
       });
+    // .on('transactionHash', (txHash) => {
+    //   res.send({ transactionHash: txHash });
+    // });
   } catch (e) {
     throw e;
   }
