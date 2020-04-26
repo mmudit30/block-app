@@ -10,7 +10,7 @@ exports.getWeb3Instant = () => {
   const contractAbi = Result.abi;
   const contract = new web3.eth.Contract(
     contractAbi,
-    '0x038f16Fb148fBBAB34Ff086bF0cCD9e72d8fb381'
+    '0x484c12b655e0317a069396b5f110fca457a4226a'
   );
   return { web3, contract };
 };

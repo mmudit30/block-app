@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+.primary-light-blue{
+	color: #4F84EB !important;
+}
+.primary-dark-blue{
+	color: #2861CF !important;
+}
+.primary-blue-gradient{
+	background-image: linear-gradient(to right, #4F84EB, #2861CF);
+}
+.primary-light-orange{
+	color: #FA9600 !important;
+}
+.primary-dark-orange{
+	color: #F97700 !important;
+}
+.primary-orange-gradient{
+	background-image: linear-gradient(to right, #FA9600, #F97700);
+}
+.primary-dark-gray{
+	color: #22262D !important;
+}
+.primary-light-gray{
+	color: #9BA5BA !important;
+}
+.primary-bg-dark{
+	background-color: #22262D !important;
+}
+.primary-bg-light{
+	background-color: #9BA5BA !important;
+}
