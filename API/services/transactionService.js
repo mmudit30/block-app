@@ -34,7 +34,7 @@ exports.getDoctorInfo = async (doctorId) => {
   return result;
 };
 exports.getPatientResult = async (patientId) => {
-  const result = await contract.methods.getResult(doctorId).call();
+  const result = await contract.methods.getResult(patientId).call();
   return result;
 };
 const createTx = async (txObj) => {
