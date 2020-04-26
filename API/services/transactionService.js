@@ -25,7 +25,14 @@ exports.registerDoctor = async (address, id, name, labId, res) => {
     throw e;
   }
 };
-
+exports.getDoctorInfo = async (doctorId) => {
+  const result = await contract.methods.getDoctorInfo(doctorId).call();
+  return result;
+};
+exports.getPatientResult = async (patientId) => {
+  const result = await contract.methods.getResult(doctorId).call();
+  return result;
+};
 const createTx = async (txObj) => {
   const txnCount = await web3.eth.getTransactionCount(txObj.from, 'pending');
   txObj.nonce = txObj.nonce ? txObj.nonce : web3.utils.numberToHex(txnCount);

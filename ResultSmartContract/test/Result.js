@@ -18,6 +18,8 @@ contract('Result', (accounts) => {
     });
     const result = await contract.signInDoctor('VN-54', { from: alice });
     assert.equal(result, true);
+    const doctorInfo = await contract.getDoctorInfo('VN-54', { from: alice });
+    console.log('Doctor Info', doctorInfo);
   });
   it('should allow to add result', async () => {
     await contract.assignDoctor(alice, 'VN-54', 'Bob', 'CV', {
