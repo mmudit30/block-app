@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -12,13 +13,37 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class DashboardActivity extends AppCompatActivity {
     Button show_qr;
+    String patientName, idType, doctorId, testResult, antibodyCount;
+    TextView tv_patientName, tv_testResult, tv_antibodyCount,  tv_warningMsg;
+    ImageView im_statusIcon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try {
+            JSONObject mainObject = new JSONObject(getIntent().getStringExtra("RESPONSE"));
+            patientName = mainObject.getString("0");
+            idType =  mainObject.getString("1");
+            doctorId = mainObject.getString("2");
+            testResult = mainObject.getString("3");
+            antibodyCount = mainObject.getString("4");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         setContentView(R.layout.activity_dashboard);
+        tv_patientName = findViewById(R.id.tv_patientName);
+        tv_testResult = findViewById(R.id.tv_testResult);
+        tv_warningMsg = findViewById(R.id.tv_warningMsg);
+        im_statusIcon = findViewById(R.id.im_statusIcon);
+
+
         show_qr = findViewById(R.id.btn_show_qr);
         show_qr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +56,22 @@ public class DashboardActivity extends AppCompatActivity {
 //                settingsDialog.show();
             }
         });
+
+        updateStatus();
+    }
+    public void  updateStatus(){
+        tv_patientName.setText("Hi "+ patientName);
+        if(testResult.equals("Positive Case")){
+            tv_testResult.setBackgroundResource(R.color.colorRed);
+            tv_testResult.setText(R.string.positive);
+            tv_warningMsg.setVisibility(View.VISIBLE);
+            im_statusIcon.setImageResource(R.drawable.shield_x);
+        } else{
+            tv_testResult.setBackgroundResource(R.color.colorGreen);
+            tv_testResult.setText(R.string.negative);
+            tv_warningMsg.setVisibility(View.INVISIBLE);
+            im_statusIcon.setImageResource(R.drawable.shield);
+        }
     }
     public void showImage() {
         Dialog builder = new Dialog(this);
@@ -50,5 +91,13 @@ public class DashboardActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         builder.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(this, MainActivity.class);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
     }
 }

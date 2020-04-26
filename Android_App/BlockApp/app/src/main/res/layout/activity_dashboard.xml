@@ -6,17 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".DashboardActivity">
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="376dp"
-        android:layout_height="116dp"
+    <TextView
+        android:id="@+id/tv_warningMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/colorRed"
+        android:text="@string/warning_text"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419"
-        app:srcCompat="@raw/positive_warning" />
+        app:layout_constraintVertical_bias="0.419" />
 
     <TextView
         android:id="@+id/tv_person5"
@@ -33,7 +40,7 @@
         app:layout_constraintVertical_bias="0.632" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/im_statusIcon"
         android:layout_width="64dp"
         android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,9 +82,12 @@
 
     <TextView
         android:id="@+id/tv_testResult"
-        android:layout_width="105dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorRed"
+        android:padding="2dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="Positive"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
@@ -105,7 +115,7 @@
         app:layout_constraintVertical_bias="0.562" />
 
     <TextView
-        android:id="@+id/tv_safe"
+        android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You are Infected"
@@ -157,7 +167,7 @@
         app:srcCompat="@raw/places" />
 
     <TextView
-        android:id="@+id/tv_person"
+        android:id="@+id/tv_patientName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hi Sick Guy"

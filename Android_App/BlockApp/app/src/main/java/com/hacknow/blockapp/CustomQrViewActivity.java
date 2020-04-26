@@ -12,9 +12,9 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -88,13 +88,9 @@ public class CustomQrViewActivity extends AppCompatActivity implements ZXingScan
     public void handleResult(Result rawResult) {
         //Toast.makeText(this, "Contents = " + rawResult.getText() +", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
 
-        // Note:
-        // * Wait 2 seconds to resume the preview.
-        // * On older devices continuously stopping and resuming camera preview can result in freezing the app.
-        // * I don't know why this is the case but I don't have the time to figure out.
-
         Intent intent = new Intent(this, VerificationActivity.class);
         intent.putExtra("QR_CODE",rawResult.getText() );
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 

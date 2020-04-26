@@ -29,4 +29,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="negative">Negative</string>
+    <string name="positive">Positive</string>
+    <string name="warning_text">You are tested Positive!!\n Call helpline number immediately.\n Isolate yourself and wait for instructions</string>
 </resources>
