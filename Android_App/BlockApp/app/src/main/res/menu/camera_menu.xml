@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<item
+    android:id="@+id/action_more"
+    android:icon="@drawable/ic_more_vert_white_24dp"
+    android:title=""
+    app:showAsAction="always"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <menu>
+        <item
+            android:id="@+id/flash"
+            android:icon="@drawable/ic_flash_on_24dp"
+            android:title="Flash"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/auto_focus"
+            android:icon="@drawable/ic_center_focus_weak_24dp"
+            android:title="Focus"
+            app:showAsAction="ifRoom" />
+        </menu>
+        </item>
